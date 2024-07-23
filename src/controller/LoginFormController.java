@@ -1,23 +1,24 @@
 package controller;
 
+
+
+import java.io.IOException;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXRadioButton;
-
-// import com.jfoenix.controls.JFXButton;
-// import com.jfoenix.controls.JFXRadioButton;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-// import javafx.scene.control.Label;
-// import javafx.scene.control.TextField;
-// import javafx.scene.image.ImageView;
-// import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import java.net.URL;
 
 public class LoginFormController {
     @FXML
@@ -56,12 +57,12 @@ public class LoginFormController {
 
      // Predefined values for username and password
      private final String VALID_USERNAME = "admin";
-     private final String VALID_PASSWORD = "password123";
+     private final String VALID_PASSWORD = "123";
    
 
     //permission for login to the system
     @FXML
-    void btnLoginOnAction(ActionEvent event) {
+    void btnLoginOnAction(ActionEvent event)throws IOException {
         System.out.println("Logged");
 
         String enteredUsername = txtEmail.getText();
@@ -69,6 +70,14 @@ public class LoginFormController {
 
         if (enteredUsername.equals(VALID_USERNAME) && enteredPassword.equals(VALID_PASSWORD)) {
             showAlert(AlertType.INFORMATION, "Login Successful", "Welcome, " + enteredUsername + "!");
+            //////////////////////////////////////////////////////////////////////////////////////////////////
+            URL resource = this.getClass().getResource("/view/Home.fxml");
+            Parent root = FXMLLoader.load(resource);
+            Stage stage=new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+            stage.setTitle("Home");
+            //////////////////////////////////////////////////////////////////////////////////////////////////
         } else {
             showAlert(AlertType.ERROR, "Login Failed", "Invalid username or password.");
         }
