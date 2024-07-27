@@ -1,0 +1,125 @@
+/////////////////////////DATA BASE FOR A LIBRARY MANAGEMENT SYSTEM///////////////////////
+DROP DATABASE IF EXISTS lms;
+CREATE DATABASE lms;
+USE lms;
+CREATE TABLE BookCategories (
+    CategoryID VARCHAR(10) PRIMARY KEY,
+    CategoryName VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Books (
+    BookID VARCHAR(10) PRIMARY KEY,
+    Title VARCHAR(255) NOT NULL,
+    Author VARCHAR(255) NOT NULL,
+    CategoryID VARCHAR(10),
+    ISBN VARCHAR(50),
+    Year INT,
+    CopiesAvailable INT,
+    FOREIGN KEY (CategoryID) REFERENCES BookCategories(CategoryID)
+);
+
+CREATE TABLE Members (
+    MemberID VARCHAR(10)  PRIMARY KEY,
+    Name VARCHAR(255) NOT NULL,
+    DOB VARCHAR(25) NOT NULL,
+    Address VARCHAR(255),
+    ContactNumber VARCHAR(15),
+    Email VARCHAR(255)
+);
+
+CREATE TABLE Borrowings (
+    BorrowingID VARCHAR(10) PRIMARY KEY,
+    MemberID VARCHAR(10),
+    BookID VARCHAR(10),
+    BorrowDate DATE,
+    DueDate DATE,
+    ReturnDate DATE,
+    Fine DECIMAL(10, 2),
+    FOREIGN KEY (MemberID) REFERENCES Members(MemberID));
+    
+
+CREATE TABLE BorrowingsDetails (
+BookID VARCHAR(10),
+BorrowingID VARCHAR(10),
+FOREIGN KEY (BookID) REFERENCES Books(BookID));
+
+
+
+
+INSERT INTO BookCategories (CategoryID, CategoryName) VALUES ('cat001', 'Science'), ('cat002', 'Environment'), ('cat003', 'Languages'), ('cat004', 'IT'), ('cat005', 'Philosophy'), ('cat006', 'Psychology'), ('cat007', 'Novels'), ('cat008', 'Health'), ('cat009', 'Magazine'), ('cat010', 'Others');
+
+INSERT INTO Books (BookID, Title, Author, CategoryID, ISBN, Year, CopiesAvailable) VALUES  ('b001', 'The Universe', 'Chandana Jayaratne', 'cat001', '9789554567890', 2018, 5),('b002', 'Sri Lankan Biodiversity', 'Nimal Perera', 'cat001', '9789554578901', 2016, 3),
+('b003', 'Physics for Beginners', 'Ananda Wijesinghe', 'cat001', '9789554589012', 2017, 4),
+('b004', 'Chemistry Essentials', 'Kamala Silva', 'cat001', '9789554590123', 2019, 2),
+('b005', 'Exploring Space', 'Samantha Rajapakse', 'cat001', '9789554512345', 2020, 6),
+('b006', 'Genetics and Evolution', 'Roshan Fernando', 'cat001', '9789554523456', 2015, 7),
+('b007', 'Marine Biology', 'Priyanka Wickramasinghe', 'cat001', '9789554534567', 2014, 2),
+('b008', 'Environmental Science', 'Nalaka Gunawardena', 'cat001', '9789554545678', 2013, 4), ('b009', 'Wildlife of Sri Lanka', 'Kamal de Silva', 'cat002', '9789554656789', 2011, 5),
+('b010', 'Sustainable Living', 'Nayana Perera', 'cat002', '9789554667890', 2012, 6),
+('b011', 'Forests of Sri Lanka', 'Anura Weerasinghe', 'cat002', '9789554678901', 2010, 3),
+('b012', 'Water Resources', 'Manel Jayawardene', 'cat002', '9789554689012', 2013, 4),
+('b013', 'Climate Change', 'Sasanka Senaratne', 'cat002', '9789554690123', 2015, 2),
+('b014', 'Environmental Policies', 'Sunil Ratnayake', 'cat002', '9789554701234', 2016, 5),
+('b015', 'Green Energy', 'Harsha Karunaratne', 'cat002', '9789554712345', 2017, 7),
+('b016', 'Coastal Ecosystems', 'Lasith Jayasekera', 'cat002', '9789554723456', 2018, 3),
+ ('b017', 'Sinhalese Grammar', 'Mohan Perera', 'cat003', '9789554834567', 2009, 8),
+('b018', 'Tamil for Beginners', 'Jeevan Chandrasekaran', 'cat003', '9789554845678', 2011, 5),('b019', 'Spoken English', 'Shirani Samarasinghe', 'cat003', '9789554856789', 2013, 6),
+('b020', 'Sanskrit Literature', 'Vijitha Fernando', 'cat003', '9789554867890', 2015, 4),
+('b021', 'Translation Techniques', 'Ranjith Jayasekara', 'cat003', '9789554878901', 2016, 3),
+('b022', 'Linguistics Basics', 'Amara Peris', 'cat003', '9789554889012', 2018, 2),
+('b023', 'Sinhala Poetry', 'Chandrika Gamage', 'cat003', '9789554890123', 2019, 7),
+('b024', 'Language and Culture', 'Nalini Perera', 'cat003', '9789554901234', 2020, 5),
+ ('b025', 'Introduction to Computing', 'Nalaka Peiris', 'cat004', '9789555012345', 2012, 4),
+('b026', 'Programming in Java', 'Kushan Weeraratne', 'cat004', '9789555023456', 2014, 5),
+('b027', 'Web Development', 'Dilantha Jayakody', 'cat004', '9789555034567', 2015, 3),
+('b028', 'Database Systems', 'Gayan Peiris', 'cat004', '9789555045678', 2017, 6),
+('b029', 'Network Security', 'Kasun Fernando', 'cat004', '9789555056789', 2018, 2),
+('b030', 'Artificial Intelligence', 'Sanduni Rathnayake', 'cat004', '9789555067890', 2019, 7),
+('b031', 'Big Data Analytics', 'Harsha Perera', 'cat004', '9789555078901', 2020, 4),
+('b032', 'Cloud Computing', 'Lasith Kumara', 'cat004', '9789555089012', 2021, 8),
+ ('b033', 'Buddhist Philosophy', 'Karunaratne Amarasinghe', 'cat005', '9789555090123', 2008, 5),
+('b034', 'Eastern Philosophy', 'Mahesh Senanayake', 'cat005', '9789555101234', 2009, 3),
+('b035', 'Western Thought', 'Sampath Jayasekara', 'cat005', '9789555112345', 2010, 4),
+('b036', 'Philosophy of Science', 'Tharindu Perera', 'cat005', '9789555123456', 2012, 6),
+('b037', 'Ethics and Morality', 'Nadeesha Silva', 'cat005', '9789555134567', 2014, 7),
+('b038', 'Political Philosophy', 'Kumudu Bandara', 'cat005', '9789555145678', 2015, 2),
+('b039', 'Philosophy of Mind', 'Roshan Jayawardene', 'cat005', '9789555156789', 2017, 5),
+('b040', 'Contemporary Philosophy', 'Sanduni Rathnayake', 'cat005', '9789555167890', 2018, 8), ('b041', 'Introduction to Psychology', 'Nishantha Perera', 'cat006', '9789555178901', 2012, 4),('b042', 'Developmental Psychology', 'Chamara Jayasuriya', 'cat006', '9789555189012', 2013, 3),('b043', 'Clinical Psychology', 'Ruwan Peris', 'cat006', '9789555190123', 2014, 6),('b044', 'Cognitive Psychology', 'Nimal Perera', 'cat006', '9789555201234', 2015, 7),('b045', 'Social Psychology', 'Dilani Fernando', 'cat006', '9789555212345', 2016, 2),('b046', 'Counseling Techniques', 'Kishantha Ratnayake', 'cat006', '9789555223456', 2017, 5),('b047', 'Behavioral Science', 'Upul Jayasekara', 'cat006', '9789555234567', 2018, 8),('b048', 'Psychology of Learning', 'Niluka Senaratne', 'cat006', '9789555245678', 2019, 4), ('b049', 'The Village in the Jungle', 'Leonard Woolf', 'cat007', '9789555356789', 1913, 10),('b050', 'Madol Doova', 'Martin Wickramasinghe', 'cat007', '9789555367890', 1947, 6),('b051', 'Gamperaliya', 'Martin Wickramasinghe', 'cat007', '9789555378901', 1944, 5),('b052', 'Viragaya', 'Martin Wickramasinghe', 'cat007', '9789555389012', 1956, 7),('b053', 'The Road from Elephant Pass', 'Nihal De Silva', 'cat007', '9789555390123', 2003, 4),('b054', 'Anil’s Ghost', 'Michael Ondaatje', 'cat007', '9789555401234', 2000, 3),('b055', 'Chinaman', 'Shehan Karunatilaka', 'cat007', '9789555412345', 2010, 2),('b056', 'The Ceaseless Chatter of Demons', 'Ashok Ferrey', 'cat007', '9789555423456', 2017, 6), ('b057', 'Ayurveda: The Science of Life', 'Sumedha Ranasinghe', 'cat008', '9789555534567', 2010, 8),('b058', 'Healthy Living', 'Sujatha Senanayake', 'cat008', '9789555545678', 2012, 7),('b059', 'Nutrition for Well-being', 'Ranjan Perera', 'cat008', '9789555556789', 2014, 6),('b060', 'Yoga and Meditation', 'Chandrika De Silva', 'cat008', '9789555567890', 2015, 5),('b061', 'Fitness Guide', 'Amila Jayawardena', 'cat008', '9789555578901', 2016, 4),('b062', 'Mental Health Awareness', 'Roshan Jayasuriya', 'cat008', '9789555589012', 2017, 3),('b063', 'Traditional Medicine', 'Nimali Fernando', 'cat008', '9789555590123', 2018, 2),('b064', 'Modern Medical Practices', 'Chaminda Perera', 'cat008', '9789555601234', 2019, 5), ('b065', 'Explore Sri Lanka', 'Various Authors', 'cat009', '9789555712345', 2010, 9),('b066', 'Serendib', 'Various Authors', 'cat009', '9789555723456', 2011, 8),('b067', 'Sri Lanka: The Island', 'Various Authors', 'cat009', '9789555734567', 2012, 7),('b068', 'National Geographic: Sri Lanka', 'Various Authors', 'cat009', '9789555745678', 2013, 6),('b069', 'Travel Lanka', 'Various Authors', 'cat009', '9789555756789', 2014, 5),('b070', 'Heritage Magazine', 'Various Authors', 'cat009', '9789555767890', 2015, 4),('b071', 'Business Today', 'Various Authors', 'cat009', '9789555778901', 2016, 3),('b072', 'Explore Asia', 'Various Authors', 'cat009', '9789555789012', 2017, 2), ('b073', 'Ceylon Tea Story', 'Dilip Seneviratne', 'cat010', '9789555790123', 2009, 6),('b074', 'The History of Sri Lanka', 'K. M. De Silva', 'cat010', '9789555801234', 2010, 5),('b075', 'The Temple of the Tooth', 'H. W. Codrington', 'cat010', '9789555812345', 2011, 4),('b076', 'Sri Lankan Art', 'Rohana Chithra', 'cat010', '9789555823456', 2012, 3),('b077', 'Festivals of Sri Lanka', 'Nayana Jayawardena', 'cat010', '9789555834567', 2013, 2),('b078', 'Sri Lankan Cuisine', 'Sulochana Wijesinghe', 'cat010', '9789555845678', 2014, 7),('b079', 'Traditional Crafts', 'Janaki Perera', 'cat010', '9789555856789', 2015, 8),('b080', 'The Elephants of Sri Lanka', 'Chaminda Karunaratne', 'cat010', '9789555867890', 2016, 6);
+
+
+INSERT INTO Members (MemberID, Name, DOB, Address, ContactNumber, Email) VALUES 
+('m001', 'Anura Perera', '1985-02-14', '123 Main Street, Colombo', '0711234567', 'anura.perera@example.com'),
+('m002', 'Nimal Fernando', '1978-06-22', '45 Galle Road, Galle', '0772345678', 'nimal.fernando@example.com'),
+('m003', 'Sunil Jayawardena', '1982-11-12', '78 Lake Road, Kandy', '0723456789', 'sunil.jayawardena@example.com'),
+('m004', 'Kamal de Silva', '1990-01-30', '22 Temple Road, Kurunegala', '0784567890', 'kamal.desilva@example.com'),
+('m005', 'Rohan Peris', '1987-03-25', '90 Market Street, Matara', '0715678901', 'rohan.peris@example.com'),
+('m006', 'Samanthi Wijesinghe', '1992-05-17', '56 Sea Avenue, Negombo', '0776789012', 'samanthi.wijesinghe@example.com'),
+('m007', 'Chamara Rathnayake', '1984-07-05', '34 Hill Street, Nuwara Eliya', '0727890123', 'chamara.rathnayake@example.com'),
+('m008', 'Nalini Senaratne', '1989-09-19', '12 King’s Court, Anuradhapura', '0788901234', 'nalini.senaratne@example.com'),
+('m009', 'Kasun Wickramasinghe', '1975-12-01', '67 Flower Road, Colombo', '0719012345', 'kasun.wickramasinghe@example.com'),
+('m010', 'Nadeesha Bandara', '1983-04-21', '89 River View, Kandy', '0770123456', 'nadeesha.bandara@example.com'),
+('m011', 'Gayan Karunaratne', '1991-06-11', '34 Forest Lane, Ratnapura', '0721234567', 'gayan.karunaratne@example.com'),
+('m012', 'Amila Gunawardena', '1986-08-27', '45 Mountain Road, Badulla', '0782345678', 'amila.gunawardena@example.com'),
+('m013', 'Pradeep Kumara', '1980-10-10', '56 Ocean Drive, Hambantota', '0713456789', 'pradeep.kumara@example.com'),
+('m014', 'Lakmini Silva', '1993-02-02', '78 Orchard Street, Jaffna', '0774567890', 'lakmini.silva@example.com'),
+('m015', 'Dinuka Jayasuriya', '1988-05-15', '12 Palm Avenue, Kalutara', '0725678901', 'dinuka.jayasuriya@example.com'),
+('m016', 'Harsha Weerasinghe', '1981-03-22', '34 Riverside, Kegalle', '0786789012', 'harsha.weerasinghe@example.com'),
+('m017', 'Chandani Senanayake', '1984-09-09', '90 Garden Road, Polonnaruwa', '0717890123', 'chandani.senanayake@example.com'),
+('m018', 'Roshan Jayasena', '1990-12-20', '45 Lake View, Trincomalee', '0778901234', 'roshan.jayasena@example.com'),
+('m019', 'Lalith Jayasekara', '1985-01-18', '78 Temple Road, Vavuniya', '0729012345', 'lalith.jayasekara@example.com'),
+('m020', 'Anjana Ranatunga', '1989-04-27', '12 Hill Crest, Batticaloa', '0780123456', 'anjana.ranatunga@example.com'),
+('m021', 'Upul Wijesekara', '1977-06-30', '34 Market Street, Ampara', '0711234567', 'upul.wijesekara@example.com'),
+('m022', 'Tharanga Fonseka', '1983-08-16', '45 River Road, Puttalam', '0772345678', 'tharanga.fonseka@example.com'),
+('m023', 'Chathura Senarath', '1992-11-24', '78 Sea View, Kilinochchi', '0723456789', 'chathura.senarath@example.com'),
+('m024', 'Isuru Jayasinghe', '1987-02-19', '12 Hilltop, Mullaitivu', '0784567890', 'isuru.jayasinghe@example.com'),
+('m025', 'Buddhika Ranasinghe', '1982-07-04', '34 Forest Avenue, Mannar', '0715678901', 'buddhika.ranasinghe@example.com'),
+('m026', 'Mahesh Perera', '1990-09-14', '45 Ocean View, Monaragala', '0776789012', 'mahesh.perera@example.com'),
+('m027', 'Sanjaya Wickrematunga', '1986-11-23', '78 Mountain View, Matale', '0727890123', 'sanjaya.wickrematunga@example.com'),
+('m028', 'Ruwani Peris', '1983-03-13', '12 Orchard Lane, Kurunegala', '0788901234', 'ruwani.peris@example.com'),
+('m029', 'Kalpani Dias', '1988-06-29', '34 Riverside Avenue, Gampaha', '0719012345', 'kalpani.dias@example.com'),
+('m030', 'Sasanka Alwis', '1985-01-08', '45 Market Square, Badulla', '0770123456', 'sasanka.alwis@example.com');
+
+
+
+
+

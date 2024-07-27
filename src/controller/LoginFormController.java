@@ -3,6 +3,7 @@ package controller;
 
 
 import java.io.IOException;
+import java.net.URL;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXRadioButton;
@@ -17,10 +18,17 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+// import javafx.stage.Stage;
+// import java.net.URL;
+// import javafx.scene.Scene;
 import javafx.stage.Stage;
-import java.net.URL;
+
 
 public class LoginFormController {
+    
+
+
+
     @FXML
     private JFXButton btnForgetPassword;
 
@@ -42,8 +50,8 @@ public class LoginFormController {
     @FXML
     private JFXRadioButton rBtnRememberMe;
 
-    @FXML
-    private AnchorPane root;
+     @FXML
+     private AnchorPane root;
 
     @FXML
     private TextField txtEmail;
@@ -77,6 +85,13 @@ public class LoginFormController {
             stage.setScene(new Scene(root));
             stage.show();
             stage.setTitle("Home");
+
+            // this.root.getChildren().clear();
+            // Parent node = FXMLLoader.load(this.getClass().getResource("/view/Home.fxml"));
+            // this.root.getChildren().add(node);
+
+            // Set the title of the window
+            
             //////////////////////////////////////////////////////////////////////////////////////////////////
         } else {
             showAlert(AlertType.ERROR, "Login Failed", "Invalid username or password.");

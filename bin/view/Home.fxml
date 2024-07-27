@@ -5,44 +5,44 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="449.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="764.0" prefWidth="977.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
    <children>
-      <Label fx:id="lblTitle" layoutX="274.0" layoutY="68.0" prefHeight="31.0" prefWidth="93.0" text="Home" textAlignment="CENTER" textFill="#1b9160">
+      <Label fx:id="lblTitle" layoutX="441.0" layoutY="184.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="31.0" prefWidth="93.0" text="Home" textAlignment="CENTER" textFill="#1b9160">
          <font>
             <Font name="System Bold" size="31.0" />
          </font>
       </Label>
-      <JFXButton fx:id="btnBooks" buttonType="RAISED" layoutX="224.0" layoutY="177.0" onAction="#btnBooksOnAction" prefHeight="36.0" prefWidth="187.0" style="-fx-background-color: rgb(247, 241, 227);" text="Books" textFill="#43a478">
+      <JFXButton fx:id="btnBooks" buttonType="RAISED" layoutX="395.0" layoutY="322.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#btnBooksOnAction" prefHeight="36.0" prefWidth="187.0" style="-fx-background-color: rgb(247, 241, 227);" text="Books" textFill="#43a478">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
       </JFXButton>
-      <Label fx:id="lblLms" layoutX="195.0" layoutY="6.0" prefHeight="64.0" prefWidth="256.0" text="City Library" textAlignment="CENTER" textFill="#1b9160">
+      <Label fx:id="lblLms" layoutX="361.0" layoutY="36.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="64.0" prefWidth="256.0" text="City Library" textAlignment="CENTER" textFill="#1b9160">
          <font>
             <Font name="ScriptC" size="39.0" />
          </font>
       </Label>
-      <JFXButton fx:id="btnBorrowings" buttonType="RAISED" layoutX="224.0" layoutY="277.0" onAction="#btnBorrowingsOnAction" prefHeight="36.0" prefWidth="187.0" style="-fx-background-color: rgb(247, 241, 227);" text="Borrowing" textFill="#43a478">
+      <JFXButton fx:id="btnBorrowings" buttonType="RAISED" layoutX="395.0" layoutY="439.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#btnBorrowingsOnAction" prefHeight="36.0" prefWidth="187.0" style="-fx-background-color: rgb(247, 241, 227);" text="Borrowing" textFill="#43a478">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="btnContact" buttonType="RAISED" layoutX="224.0" layoutY="375.0" onAction="#btnContactOnAction" prefHeight="36.0" prefWidth="187.0" style="-fx-background-color: rgb(247, 241, 227);" text="Contact us" textFill="#43a478">
+      <JFXButton fx:id="btnContact" buttonType="RAISED" layoutX="395.0" layoutY="560.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#btnContactOnAction" prefHeight="36.0" prefWidth="187.0" style="-fx-background-color: rgb(247, 241, 227);" text="Contact us" textFill="#43a478">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="btnBorrowingDetails" buttonType="RAISED" layoutX="225.0" layoutY="328.0" onAction="#btnBorrowingsOnAction" prefHeight="36.0" prefWidth="187.0" style="-fx-background-color: rgb(247, 241, 227);" text="Borrowing Details" textFill="#43a478">
+      <JFXButton fx:id="btnBorrowingDetails" buttonType="RAISED" layoutX="395.0" layoutY="501.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#btnBorrowingsOnAction" prefHeight="36.0" prefWidth="187.0" style="-fx-background-color: rgb(247, 241, 227);" text="Borrowing Details" textFill="#43a478">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="btnMembers" buttonType="RAISED" layoutX="224.0" layoutY="227.0" onAction="#btnMembersOnAction" prefHeight="36.0" prefWidth="187.0" style="-fx-background-color: rgb(247, 241, 227);" text="Members" textFill="#43a478">
+      <JFXButton fx:id="btnMembers" buttonType="RAISED" layoutX="395.0" layoutY="382.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#btnMembersOnAction" prefHeight="36.0" prefWidth="187.0" style="-fx-background-color: rgb(247, 241, 227);" text="Members" textFill="#43a478">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="btnCatogory" buttonType="RAISED" layoutX="224.0" layoutY="132.0" onAction="#btnCatogoryOnAction" prefHeight="36.0" prefWidth="187.0" style="-fx-background-color: rgb(247, 241, 227);" text="Book category" textFill="#43a478">
+      <JFXButton fx:id="btnCatogory" buttonType="RAISED" layoutX="394.0" layoutY="265.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#btnCatogoryOnAction" prefHeight="36.0" prefWidth="187.0" style="-fx-background-color: rgb(247, 241, 227);" text="Book category" textFill="#43a478">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
