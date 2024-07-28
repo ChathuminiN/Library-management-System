@@ -1,26 +1,18 @@
 package controller;
 
-
-
-
-
-
-
+import java.net.URL;
 import java.util.ArrayList;
-import java.util.Locale.Category;
-
-import javax.swing.JOptionPane;
+import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
-
 import dto.CategoryDto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -31,16 +23,9 @@ import service.ServiceFactory;
 import service.custom.CategoryService;
 import tm.BookCategoryTM;
 
+public class CategoryController implements Initializable {
 
-
-
-public class CategoryController {
-    
-
-
-    public CategoryController() throws Exception {
-        loadTable();
-    }
+   
 
     @FXML
     private JFXButton btnCreate;
@@ -52,10 +37,10 @@ public class CategoryController {
     private JFXButton btnUpdate;
 
     @FXML
-    private TableColumn<?, ?> colCatName;
+    private TableColumn<BookCategoryTM, String> colCatName;
 
     @FXML
-    private TableColumn<?, ?> colCatId;
+    private TableColumn<BookCategoryTM, String> colCatId;
 
     @FXML
     private Label lblCatId;
@@ -73,7 +58,7 @@ public class CategoryController {
     private AnchorPane root;
 
     @FXML
-    private TableView<?> tblCategory;
+    private TableView<BookCategoryTM> tblCategory;
 
     @FXML
     private TextField txtCatId;
@@ -84,20 +69,44 @@ public class CategoryController {
 
     @FXML
     private JFXButton btnSearch;
+    
 
     
 
+    
+    
+    private CategoryService categoryService = (CategoryService)ServiceFactory.getInstance().getService(ServiceFactory.ServiceType.CATEGORY);
+    
+    public CategoryController() throws Exception {
+              
+    }    
+    
     /////////////////////////////Action Buttons controlling//////////////////////////////////////
      @FXML
     void btnCreateOnAction(ActionEvent event) throws Exception {
         System.out.println("Create Cat");
-        create();       
-        
+        create();             
+    } 
+    @FXML
+    void btnDeleteOnAction(ActionEvent event)throws Exception {
+        System.out.println("Delete Cat");
+        delete();    
     }
 
-    private CategoryService categoryService = (CategoryService)ServiceFactory.getInstance().getService(ServiceFactory.ServiceType.CATEGORY);
+    @FXML
+    void btnEditOnAction(ActionEvent event) throws Exception {
+        System.out.println("Edit Cat");
+        update();
+    }
 
-    private void create() throws Exception {
+    @FXML
+    void btnSearchOnAction(ActionEvent event) throws Exception {
+        System.out.println("clicked on search");
+        search();       
+    }
+
+
+    private void create()  {
         try {
             String catId = txtCatId.getText();
             String catName = txtCatName.getText();
@@ -118,23 +127,9 @@ public class CategoryController {
             showAlert(AlertType.ERROR, "Error", "An error occurred: " + e.getMessage());
         }
     }
-    
-
-    
-
-    private void loadTable() {
-
-
-
-    
         
-    }
-
-
-
-    @FXML
-    void btnDeleteOnAction(ActionEvent event) {
-        System.out.println("Delete Cat");
+       
+    private void delete() {
         try {
             String catID = txtCatId.getText();            
             String resp = categoryService.delete(catID);
@@ -154,15 +149,7 @@ public class CategoryController {
             
             showAlert(AlertType.ERROR, "Error", "An error occurred while deleting the category: " + e.getMessage());
         }
-    }
-    
-    @FXML
-    void btnEditOnAction(ActionEvent event) {
-        System.out.println("Edit Cat");
-        update();
-
-    }
-
+    } 
     
     private void update() {
         try {
@@ -183,16 +170,6 @@ public class CategoryController {
         }
     }
 
-
-
-
-    @FXML
-    void btnSearchOnAction(ActionEvent event) {
-        System.out.println("clicked on search");
-        search();
-
-    }
-
     private void search() {
         try {
             String catID=txtCatId.getText();            
@@ -210,37 +187,29 @@ public class CategoryController {
             showAlert(Alert.AlertType.ERROR, "Error", "An error occurred while searching for the category: " + e.getMessage());
         }
     }
-
-    public void initialize() throws Exception{
-        colCatId.setCellValueFactory(new PropertyValueFactory<>("Category Id"));
-        colCatName.setCellValueFactory(new PropertyValueFactory<>("Category Name"));
-        getAll();
-    }
-
-
-
-    private void getAll() throws Exception{
-        ArrayList<Category> categoryList = new ArrayList<Category>();
-        categoryList=categoryService.getAll();
-        ObservableList<BookCategoryTM> CategoryTMList = FXCollections.observableArrayList();
-
-      for(Category cat:categoryList){
+    
+    public void loadTable() throws Exception {
+        try {
+            colCatId.setCellValueFactory(new PropertyValueFactory<>("catID"));
+            colCatName.setCellValueFactory(new PropertyValueFactory<>("catName"));
         
-        BookCategoryTM categoryTM = new BookCategoryTM(
-                    cat.getCatID(),
-                    cat.getCatName()
-                    
-                );
-        CustomerTMList.add(customerTM);
-
-      }
-      System.out.println(CustomerTMList);
-      tblCustomer.setItems(CustomerTMList);
+            ArrayList<CategoryDto> categoryDtos = categoryService.getAll();
+            ObservableList<BookCategoryTM> catgoryTMList = FXCollections.observableArrayList();
+            for(CategoryDto cat:categoryDtos){
+            
+                BookCategoryTM categoryTM = new BookCategoryTM(
+                            cat.getCatID(),
+                            cat.getCatName());
+                catgoryTMList.add(categoryTM);
+            }
+        System.out.println(catgoryTMList);
+        tblCategory.setItems((ObservableList<BookCategoryTM>) catgoryTMList);
+        } catch (Exception e) {     
+            System.out.println(e.getMessage());       
+            showAlert(Alert.AlertType.ERROR, "Error", "Table Loading Error" + e.getMessage());
+        }
        
     }
-
-
-
 
     private void showAlert(AlertType alertType, String title, String message) {
         Alert alert = new Alert(alertType);
@@ -256,7 +225,18 @@ public class CategoryController {
         
     }
 
+   @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        try {
+            loadTable();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }
+
+
+
 
 

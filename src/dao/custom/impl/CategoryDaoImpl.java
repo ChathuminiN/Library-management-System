@@ -47,6 +47,7 @@ public class CategoryDaoImpl implements CategoryDao {
                         rst.getString("CategoryName"));
                 categoryEntities.add(entity);
             }
+            
             return categoryEntities;
     }
     
