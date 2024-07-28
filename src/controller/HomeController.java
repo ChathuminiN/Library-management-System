@@ -43,8 +43,12 @@ public class HomeController {
     private AnchorPane root;
 
     @FXML
-    void btnBooksOnAction(ActionEvent event) {
+    void btnBooksOnAction(ActionEvent event) throws IOException {
         System.out.println("Clicked on Books");
+        this.root.getChildren().clear();
+        Parent node = FXMLLoader.load(this.getClass().getResource("/view/Books.fxml"));
+        this.root.getChildren().add(node);
+
 
     }
 
