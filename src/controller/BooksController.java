@@ -24,25 +24,29 @@ public class BooksController {
     private JFXButton btnUpdate;
 
     @FXML
-    private TableColumn<?, ?> colAuthor;
+    private TableColumn<?, ?> colAuthor;////////////////////////
 
     @FXML
-    private TableColumn<?, ?> colBookId;
+    private TableColumn<?, ?> colBookId;////////////////////////
 
     @FXML
-    private TableColumn<?, ?> colCatId;
+    private TableColumn<?, ?> colCatId;////////////////////////
 
     @FXML
-    private TableColumn<?, ?> colCopiesAvail;
+    private TableColumn<?, ?> colCopiesAvail;////////////////////////
 
     @FXML
-    private TableColumn<?, ?> colIsbn;
+    private TableColumn<?, ?> colIsbn;////////////////////////
 
     @FXML
-    private TableColumn<?, ?> colTitle;
+    private TableColumn<?, ?> colTitle;////////////////////////
 
     @FXML
-    private TableColumn<?, ?> colYear;
+    private TableColumn<?, ?> colYear;////////////////////////
+
+    @FXML
+    private TableView<?> tblBook;////////////////////////
+
 
     @FXML
     private Label lblAuthor;
@@ -73,9 +77,6 @@ public class BooksController {
 
     @FXML
     private AnchorPane root;
-
-    @FXML
-    private TableView<?> tblBook;
 
     @FXML
     private TextField txtAuthor;
