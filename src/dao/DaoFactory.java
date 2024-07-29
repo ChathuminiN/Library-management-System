@@ -24,8 +24,13 @@ public class DaoFactory {
                 return new CategoryDaoImpl();
             case BOOK:
               return new BookDaoImpl();
+<<<<<<< HEAD
             case MEMBER:
                 return new MemberDaoImpl();
+=======
+            // case MEMBER:
+            //     return new MemberDaoImpl();
+>>>>>>> f977738b85816bdc630f829195bd91e74ef54928
             // case BORROWINGS:
             //     return new BorrowingDaoImpl();
             

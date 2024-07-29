@@ -1,5 +1,6 @@
 package service.custom.impl;
 
+<<<<<<< HEAD
 import java.util.ArrayList;
 
 import dao.DaoFactory;
@@ -82,5 +83,10 @@ public class MemberServiceImpl implements MemberService {
         MemberEntity entity = getEntity(memberDto);
         return memberDao.update(entity) ? "Success" : "Fail";
     }
+=======
+import service.custom.MemberService;
+
+public class MemberServiceImpl implements MemberService {
+>>>>>>> f977738b85816bdc630f829195bd91e74ef54928
     
 }

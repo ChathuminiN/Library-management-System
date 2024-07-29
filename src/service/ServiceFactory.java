@@ -22,8 +22,13 @@ public class ServiceFactory {
                 return new CategoryServiceImpl();
             case BOOK:
                 return new BookServiceImpl();
+<<<<<<< HEAD
             case MEMBER:
                 return new MemberServiceImpl();
+=======
+            // case MEMBER:
+            //     return new MemberServiceImpl();
+>>>>>>> f977738b85816bdc630f829195bd91e74ef54928
             // case BORROWINGS:
             //     return new BorrowingServiceImpl();
             default:
