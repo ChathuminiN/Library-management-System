@@ -1,6 +1,8 @@
 package service;
 
+import service.custom.impl.BookServiceImpl;
 import service.custom.impl.CategoryServiceImpl;
+import service.custom.impl.MemberServiceImpl;
 
 public class ServiceFactory {
     private static ServiceFactory serviceFactory;
@@ -18,10 +20,12 @@ public class ServiceFactory {
         switch (serviceType) {
             case CATEGORY:
                 return new CategoryServiceImpl();
-            // case CUSTOMER:
-            //     return new CustomerServiceimpl();
-            // case ORDER:
-            //     return new OrderServiceImpl();
+            case BOOK:
+                return new BookServiceImpl();
+            case MEMBER:
+                return new MemberServiceImpl();
+            // case BORROWINGS:
+            //     return new BorrowingServiceImpl();
             default:
                 return null;
         }
@@ -29,6 +33,6 @@ public class ServiceFactory {
     }
     
     public enum ServiceType{
-        CATEGORY;
+        CATEGORY,BOOK,MEMBER,BORROWINGS;
     }
 }

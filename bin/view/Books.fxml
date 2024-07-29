@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="742.0" prefWidth="949.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BookController">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="742.0" prefWidth="949.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BooksController">
    <children>
       <Label fx:id="lblTitle" layoutX="410.0" layoutY="33.0" prefHeight="46.0" prefWidth="158.0" text="BooKs" textAlignment="CENTER" textFill="#1b9160">
          <font>
@@ -93,5 +93,10 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
+      <JFXButton fx:id="btnSearchClear" buttonType="RAISED" layoutX="339.0" layoutY="114.0" onAction="#btnSearchClearOnAction" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: rgb(247, 241, 227);" text="Clear " textFill="#3296ae">
+         <font>
+            <Font name="Arial Bold" size="11.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

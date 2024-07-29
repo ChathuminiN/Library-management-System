@@ -43,8 +43,12 @@ public class HomeController {
     private AnchorPane root;
 
     @FXML
-    void btnBooksOnAction(ActionEvent event) {
+    void btnBooksOnAction(ActionEvent event) throws IOException {
         System.out.println("Clicked on Books");
+        this.root.getChildren().clear();
+        Parent node = FXMLLoader.load(this.getClass().getResource("/view/Books.fxml"));
+        this.root.getChildren().add(node);
+
 
     }
 
@@ -76,14 +80,21 @@ public class HomeController {
     }
 
     @FXML
-    void btnContactOnAction(ActionEvent event) {
+    void btnContactOnAction(ActionEvent event) throws IOException {
         System.out.println("Clicked on Contact us");
+        this.root.getChildren().clear();
+        Parent node = FXMLLoader.load(this.getClass().getResource("/view/ContactUs.fxml"));
+        this.root.getChildren().add(node);
 
     }
 
     @FXML
-    void btnMembersOnAction(ActionEvent event) {
+    void btnMembersOnAction(ActionEvent event)throws IOException {
         System.out.println("Clicked on Members");
+
+        this.root.getChildren().clear();
+        Parent node = FXMLLoader.load(this.getClass().getResource("/view/Members.fxml"));
+        this.root.getChildren().add(node);
 
     }
 
