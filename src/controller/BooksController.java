@@ -41,56 +41,7 @@ public class BooksController implements Initializable{
     @FXML
     private JFXButton btnUpdate;
 
-    @FXML
-<<<<<<< HEAD
-    private TableColumn<BookTM, String> colAuthor;
-
-    @FXML
-    private TableColumn<BookTM, String> colBookId;
-
-    @FXML
-    private TableColumn<BookTM, String> colCatId;
-
-    @FXML
-    private TableColumn<BookTM, String> colCopiesAvail;
-
-    @FXML
-    private TableColumn<BookTM, String> colIsbn;
-
-    @FXML
-    private TableColumn<BookTM, String> colTitle;
-
-    @FXML
-    private TableColumn<BookTM, String> colYear;
-
-    @FXML
-    private TableView<BookTM> tblBook;
-=======
-    private TableColumn<BookTM, String> colAuthor;////////////////////////
-
-    @FXML
-    private TableColumn<BookTM, String> colBookId;////////////////////////
-
-    @FXML
-    private TableColumn<BookTM, String> colCatId;////////////////////////
-
-    @FXML
-    private TableColumn<BookTM, String> colCopiesAvail;////////////////////////
-
-    @FXML
-    private TableColumn<BookTM, String> colIsbn;////////////////////////
-
-    @FXML
-    private TableColumn<BookTM, String> colTitle;////////////////////////
-
-    @FXML
-    private TableColumn<BookTM, String> colYear;////////////////////////
-
-    @FXML
-    private TableView<BookTM> tblBook;////////////////////////
->>>>>>> f977738b85816bdc630f829195bd91e74ef54928
-
-
+    
     @FXML
     private Label lblAuthor;
 
@@ -141,6 +92,30 @@ public class BooksController implements Initializable{
 
     @FXML
     private TextField txtYear;
+
+    @FXML
+    private TableColumn<BookTM, String> colAuthor;
+
+    @FXML
+    private TableColumn<BookTM, String> colBookId;
+
+    @FXML
+    private TableColumn<BookTM, String> colCatId;
+
+    @FXML
+    private TableColumn<BookTM, String> colCopiesAvail;
+
+    @FXML
+    private TableColumn<BookTM, String> colIsbn;
+
+    @FXML
+    private TableColumn<BookTM, String> colTitle;
+
+    @FXML
+    private TableColumn<BookTM, String> colYear;
+
+    @FXML
+    private TableView<BookTM> tblBook;
 
     ////////////////////////////////////////////////
      private BookService bookService = (BookService)ServiceFactory.getInstance().getService(ServiceFactory.ServiceType.BOOK);

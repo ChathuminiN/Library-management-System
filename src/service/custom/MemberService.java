@@ -1,6 +1,6 @@
 package service.custom;
 
-<<<<<<< HEAD
+
 import java.util.ArrayList;
 import dto.MemberDto;
 import service.SuperService;
@@ -20,10 +20,6 @@ public interface MemberService extends SuperService {
     String update(MemberDto memberDto)throws Exception;
 
     
-=======
-import service.SuperService;
 
-public interface MemberService extends SuperService {
->>>>>>> f977738b85816bdc630f829195bd91e74ef54928
     
 }

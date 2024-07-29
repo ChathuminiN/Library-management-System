@@ -1,15 +1,12 @@
 package dao.custom;
 
-<<<<<<< HEAD
-import java.util.ArrayList;
 
-=======
->>>>>>> f977738b85816bdc630f829195bd91e74ef54928
+import java.util.ArrayList;
 import dao.CrudDao;
 import entity.MemberEntity;
 
 public interface MemberDao extends CrudDao<MemberEntity, String> {
-<<<<<<< HEAD
+
 
     boolean save(MemberEntity entity)throws Exception;
 
@@ -22,7 +19,6 @@ public interface MemberDao extends CrudDao<MemberEntity, String> {
     ArrayList<MemberEntity> getAll()throws Exception;
 
     MemberEntity getN(String memName)throws Exception;
-=======
->>>>>>> f977738b85816bdc630f829195bd91e74ef54928
+
     
 }

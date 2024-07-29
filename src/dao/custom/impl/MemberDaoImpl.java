@@ -1,6 +1,6 @@
 package dao.custom.impl;
 
-<<<<<<< HEAD
+
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import dao.CrudUtil;
@@ -95,10 +95,6 @@ public class MemberDaoImpl implements MemberDao {
         }
             return null;
     }
-=======
-import dao.custom.MemberDao;
 
-public class MemberDaoImpl implements MemberDao {
->>>>>>> f977738b85816bdc630f829195bd91e74ef54928
     
 }

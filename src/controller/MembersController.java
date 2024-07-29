@@ -1,13 +1,9 @@
 package controller;
 
+
 import java.net.URL;
-<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-=======
-import java.util.ResourceBundle;
-
->>>>>>> f977738b85816bdc630f829195bd91e74ef54928
 import com.jfoenix.controls.JFXButton;
 import dto.MemberDto;
 import javafx.collections.FXCollections;
@@ -24,6 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import service.ServiceFactory;
+
 import service.custom.MemberService;
 import tm.MemberTM;
 
@@ -114,22 +111,10 @@ public class MembersController implements Initializable {
     @FXML
     private TextField txtName;
 
-<<<<<<< HEAD
-    private MemberService memberService = (MemberService)ServiceFactory.getInstance().getService(ServiceFactory.ServiceType.MEMBER);
+    private  MemberService memberService = (MemberService)ServiceFactory.getInstance().getService(ServiceFactory.ServiceType.MEMBER); 
 
     @FXML
     void btnSaveOnAction(ActionEvent event) {
-        System.out.println("save");
-=======
-    @FXML
-    void btnDeleteOnAction(ActionEvent event) {
-        delete();
-
-    }
-
-    @FXML
-    void btnSaveOnAction(ActionEvent event) {
->>>>>>> f977738b85816bdc630f829195bd91e74ef54928
         save();
 
     }
@@ -225,8 +210,6 @@ public class MembersController implements Initializable {
 
 
     }
-
-<<<<<<< HEAD
     private void searchName() {
         try {
             String memName=txtName.getText();            
@@ -251,8 +234,7 @@ public class MembersController implements Initializable {
         }
     }
 
-=======
->>>>>>> f977738b85816bdc630f829195bd91e74ef54928
+
     @FXML
     void btnClearOnAction(ActionEvent event) {
         clearForm();
@@ -264,7 +246,7 @@ public class MembersController implements Initializable {
         update();
 
     }
-<<<<<<< HEAD
+
     private void update() {
         try{
             String memberID=txtMemberID.getText();
@@ -324,11 +306,9 @@ public class MembersController implements Initializable {
             System.out.println(e.getMessage());       
             showAlert(Alert.AlertType.ERROR, "Error", "Table Loading Error" + e.getMessage());
         }
-=======
-    private void loadTable() {
-        // TODO Auto-generated method stub
->>>>>>> f977738b85816bdc630f829195bd91e74ef54928
-        }
+    }
+    
+    
 
     private void showAlert(AlertType alertType, String title, String message) {
         Alert alert = new Alert(alertType);
@@ -356,10 +336,7 @@ public class MembersController implements Initializable {
         }
     }
 
-<<<<<<< HEAD
 
-=======
->>>>>>> f977738b85816bdc630f829195bd91e74ef54928
 
 }
-}
+
