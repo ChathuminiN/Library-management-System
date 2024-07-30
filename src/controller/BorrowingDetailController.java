@@ -64,13 +64,20 @@ public class BorrowingDetailController implements Initializable {
     @FXML
     private TextField txtBorrowingID;
 
+    
+
+    
+
     private  BorrowingsDService borrowingsDService = (BorrowingsDService)ServiceFactory.getInstance().getService(ServiceFactory.ServiceType.BORROWINGDETAILS); 
 
+    @FXML
+    void btnSearchBookIDOnAction(ActionEvent event) {
+        searchBookID();
+        clearForm();
+        loadTable();
 
-    
+    }
 
-   
-    
     @FXML
     void btnSearchBIDOnAction(ActionEvent event) {
         searchBID();
@@ -78,6 +85,11 @@ public class BorrowingDetailController implements Initializable {
         loadTable();
 
     }
+    
+
+   
+    
+    
 
     private void searchBID() {
         try {
@@ -100,14 +112,7 @@ public class BorrowingDetailController implements Initializable {
 
    
 
-    @FXML
-    void btnSearchBookIDOnAction(ActionEvent event) {
-        searchBookID();
-        clearForm();
-        loadTable();
-        
-
-    }
+    
 
     private void searchBookID() {
         try {
