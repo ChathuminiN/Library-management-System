@@ -32,7 +32,7 @@
             <Font name="Arial Bold" size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="btnBorrowingDetails" buttonType="RAISED" layoutX="395.0" layoutY="501.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#btnBorrowingsOnAction" prefHeight="36.0" prefWidth="187.0" style="-fx-background-color: rgb(247, 241, 227);" text="Borrowing Details" textFill="#43a478">
+      <JFXButton fx:id="btnBorrowingDetails" buttonType="RAISED" layoutX="395.0" layoutY="501.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#btnBorrowingDetailsOnAction" prefHeight="36.0" prefWidth="187.0" style="-fx-background-color: rgb(247, 241, 227);" text="Borrowing Details" textFill="#43a478">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>

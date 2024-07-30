@@ -8,6 +8,7 @@ public class BorrowingDto {
     private String dueDate;
     private String rtnDate;
     private Double fine;
+    public Object txtFine;
     public BorrowingDto() {
     }
     public BorrowingDto(String borrID, String mid, String bookId, String borrDate, String dueDate, String rtnDate,
@@ -67,6 +68,7 @@ public class BorrowingDto {
         return "BorrowingDto [borrID=" + borrID + ", mid=" + mid + ", bookId=" + bookId + ", borrDate=" + borrDate
                 + ", dueDate=" + dueDate + ", rtnDate=" + rtnDate + ", fine=" + fine + "]";
     }
+    
     
 
     

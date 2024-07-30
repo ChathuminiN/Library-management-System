@@ -53,8 +53,12 @@ public class HomeController {
     }
 
     @FXML
-    void btnBorrowingsOnAction(ActionEvent event) {
+    void btnBorrowingsOnAction(ActionEvent event) throws IOException {
         System.out.println("Clicked on Borrowings");
+
+        this.root.getChildren().clear();
+        Parent node = FXMLLoader.load(this.getClass().getResource("/view/Borrowing.fxml"));
+        this.root.getChildren().add(node);
 
     }
 
@@ -94,6 +98,16 @@ public class HomeController {
 
         this.root.getChildren().clear();
         Parent node = FXMLLoader.load(this.getClass().getResource("/view/Members.fxml"));
+        this.root.getChildren().add(node);
+
+    }
+
+    @FXML
+    void btnBorrowingDetailsOnAction(ActionEvent event) throws IOException {
+
+        System.out.println("Clicked on Borrowing Details");
+        this.root.getChildren().clear();
+        Parent node = FXMLLoader.load(this.getClass().getResource("/view/BorrowingDetails.fxml"));
         this.root.getChildren().add(node);
 
     }
