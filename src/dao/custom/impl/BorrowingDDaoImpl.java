@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import dao.CrudUtil;
 import dao.custom.BorrowingDDao;
 import entity.BorrowingDetailEntity;
-import entity.BorrowingEntity;
+
 
 
 public class BorrowingDDaoImpl implements BorrowingDDao {

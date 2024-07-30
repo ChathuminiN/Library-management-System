@@ -8,7 +8,6 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXButton;
 
 import dto.BorrowingDetailDto;
-import dto.BorrowingDto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -68,7 +67,10 @@ public class BorrowingDetailController implements Initializable {
     private  BorrowingsDService borrowingsDService = (BorrowingsDService)ServiceFactory.getInstance().getService(ServiceFactory.ServiceType.BORROWINGDETAILS); 
 
 
+    
 
+   
+    
     @FXML
     void btnSearchBIDOnAction(ActionEvent event) {
         searchBID();
@@ -83,7 +85,7 @@ public class BorrowingDetailController implements Initializable {
             BorrowingDetailDto dto = borrowingsDService.getBorrID(borrID);
      
                  if (dto != null) {                    
-                    txtBorrowingID.setText(dto.getBrrId);
+                    txtBorrowingID.setText(dto.getBrrId());
                     txtBookID.setText(dto.getBookId());                     
  
                  } else {
@@ -96,13 +98,7 @@ public class BorrowingDetailController implements Initializable {
          }
     }
 
-    private void showAlert(AlertType alertType, String title, String message) {
-        Alert alert = new Alert(alertType);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
+   
 
     @FXML
     void btnSearchBookIDOnAction(ActionEvent event) {
@@ -119,7 +115,7 @@ public class BorrowingDetailController implements Initializable {
             BorrowingDetailDto dto = borrowingsDService.getBID(bookID);
      
                  if (dto != null) {                    
-                    txtBorrowingID.setText(dto.getBorrID());
+                    txtBorrowingID.setText(dto.getBrrId());
                     txtBookID.setText(dto.getBookId());                     
  
                  } else {
@@ -132,14 +128,7 @@ public class BorrowingDetailController implements Initializable {
          }
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        try {
-            loadTable();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+    
 
     private void loadTable() {
         try {
@@ -168,6 +157,23 @@ public class BorrowingDetailController implements Initializable {
         txtBorrowingID.setText("");
         txtBookID.setText("");
         
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        try {
+            loadTable();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showAlert(AlertType alertType, String title, String message) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
 

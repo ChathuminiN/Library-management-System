@@ -5,9 +5,7 @@ import java.util.ArrayList;
 import dao.DaoFactory;
 import dao.custom.BorrowingDDao;
 import dto.BorrowingDetailDto;
-import dto.BorrowingDto;
 import entity.BorrowingDetailEntity;
-import entity.BorrowingEntity;
 import service.custom.BorrowingsDService;
 
 public class BorrowingDServiceImpl implements BorrowingsDService {
