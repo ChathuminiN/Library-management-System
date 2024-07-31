@@ -1,12 +1,18 @@
 package controller;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+
+
 import com.jfoenix.controls.JFXButton;
 
+import dto.BookDto;
+
 import dto.BorrowingDto;
+import dto.MemberDto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,6 +20,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -21,7 +28,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import service.ServiceFactory;
+import service.custom.BookService;
 import service.custom.BorrowingService;
+import service.custom.MemberService;
+//import service.custom.BorrowingsDService;
 import tm.BorrowingTM;
 
 
@@ -41,6 +51,9 @@ public class BorrowingController implements Initializable{
 
     @FXML
     private JFXButton btnUpdate;
+     
+    @FXML
+    private JFXButton btnSearchBookName;
     
 
     @FXML
@@ -61,11 +74,19 @@ public class BorrowingController implements Initializable{
     @FXML
     private TableColumn<BorrowingTM, String> colMemberID;
 
+   // @FXML
+    //private TableColumn<BorrowingTM, Boolean> colReturndate;
     @FXML
-    private TableColumn<BorrowingTM, String> colReturndate;
+    private TableColumn<BorrowingTM, CheckBox> colReturndate;
 
     @FXML
     private TableView<BorrowingTM> tblBorrowing;
+
+    @FXML
+    private Label lblBookTitle;
+
+    @FXML
+    private Label lblMemeberDetail;
     
 
     @FXML
@@ -119,7 +140,34 @@ public class BorrowingController implements Initializable{
     @FXML
     private TextField txtRDate;
     private  BorrowingService borrowingService = (BorrowingService)ServiceFactory.getInstance().getService(ServiceFactory.ServiceType.BORROWINGS); 
+    private  BookService bookService = (BookService)ServiceFactory.getInstance().getService(ServiceFactory.ServiceType.BOOK);
+    private  MemberService memberService = (MemberService)ServiceFactory.getInstance().getService(ServiceFactory.ServiceType.MEMBER);
+    
+    @FXML
+    void btnSearchBookNameOnAction(ActionEvent event) {
+        searchBookName();
 
+    }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    private void searchBookName() {
+        try {
+            String bookID=txtBookID.getText();            
+            BookDto dto = bookService.get(bookID);//calling method to get book name
+     
+                 if (dto != null) {                    
+                    lblBookTitle.setText(dto.getTitle()+" | copies Available: "+dto.getCopiesa());
+                     
+                 } else {
+                     showAlert(Alert.AlertType.WARNING, "Not Found", "Book not found.");
+                 }
+             
+             
+         } catch (Exception e) {
+             
+             showAlert(Alert.AlertType.ERROR, "Error", "An error occurred while searching: " + e.getMessage());
+         }
+    }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
     @FXML
     void btnSaveOnAction(ActionEvent event) {
@@ -133,14 +181,16 @@ public class BorrowingController implements Initializable{
             String borrID=txtBorrowingID.getText();
             String mid=txtMemberID.getText();
             String bookId=txtBookID.getText();
-            String borrDate=txtBDate.getText();
-            String dueDate=txtDDate.getText();
-            String rtnDate=txtRDate.getText();
+            LocalDate borrDate=LocalDate.now();
+            LocalDate dueDate = borrDate.plusDays(14);
+        
             Double fine=Double.parseDouble(txtFine.getText());
             
-            if (borrID != null && !borrID.isEmpty() && mid != null && !mid.isEmpty()&&bookId != null && !bookId.isEmpty()&& borrDate != null&& !borrDate.isEmpty()) {
-                BorrowingDto borrowingDto = new BorrowingDto(borrID,mid,bookId,borrDate,dueDate,rtnDate,fine);
+            if (borrID != null && !borrID.isEmpty() && mid != null && !mid.isEmpty()&&bookId != null && !bookId.isEmpty()&& borrDate != null) {
+                BorrowingDto borrowingDto = new BorrowingDto(borrID,mid,bookId,borrDate,dueDate,false,fine);
                 String resp = borrowingService.save(borrowingDto);
+                
+               
     
                 showAlert(AlertType.INFORMATION, "Status", resp);
                 clearForm();
@@ -156,37 +206,7 @@ public class BorrowingController implements Initializable{
     }
 
     
-
-    @FXML
-    void btnDeleteOnAction(ActionEvent event) {
-        System.out.println("Delete");
-        delete();
-
-    }
-
     
-    private void delete() {
-        try {
-            String borrID = txtBorrowingID.getText();            
-            String resp = borrowingService.delete(borrID);
-            
-            if ("Success".equals(resp)) {
-                System.out.println("Borrowing deleted successfully.");
-                showAlert(AlertType.INFORMATION, "Status", "Borrowing deleted successfully.");
-                
-            } else {
-                System.out.println("Failed to delete book: " + resp);
-                showAlert(AlertType.ERROR, "Delete Failed", "Failed to delete : " + resp);
-            }
-    
-            clearForm();
-            loadTable();
-        } catch (Exception e) {
-            
-            showAlert(AlertType.ERROR, "Error", "An error occurred while deleting : " + e.getMessage());
-        }
-    }
-
     @FXML
     void btnSearchBIDOnAction(ActionEvent event) {
         System.out.println("search borrwID");
@@ -203,9 +223,9 @@ public class BorrowingController implements Initializable{
                     txtBorrowingID.setText(dto.getBorrID());
                     txtMemberID.setText(dto.getMid());
                     txtBookID.setText(dto.getBookId());
-                    txtBDate.setText(dto.getBorrDate());
-                    txtDDate.setText(dto.getDueDate());
-                    txtRDate.setText(dto.getRtnDate());
+                    txtBDate.setText(String.valueOf(dto.getBorrDate()));
+                    txtDDate.setText(String.valueOf(dto.getDueDate()));
+    
                     txtFine.setText(dto.getFine().toString());
                     
 
@@ -229,21 +249,14 @@ public class BorrowingController implements Initializable{
 
     private void searchMID() {
         try {
-            String borrMID=txtBorrowingID.getText();            
-            BorrowingDto dto = borrowingService.getMID(borrMID);
+            String memID=txtMemberID.getText();            
+            MemberDto dto = memberService.get(memID);//calling method to get memberDetail
      
                  if (dto != null) {                    
-                    txtBorrowingID.setText(dto.getBorrID());
-                    txtMemberID.setText(dto.getMid());
-                    txtBookID.setText(dto.getBookId());
-                    txtBDate.setText(dto.getBorrDate());
-                    txtDDate.setText(dto.getDueDate());
-                    txtRDate.setText(dto.getRtnDate());
-                    txtFine.setText(dto.getFine().toString());
+                    lblMemeberDetail.setText(dto.getMemberName()+"  |  "+ dto.getContact());
                      
- 
                  } else {
-                     showAlert(Alert.AlertType.WARNING, "Not Found", "Borowing not found.");
+                     showAlert(Alert.AlertType.WARNING, "Not Found", "Member not found.");
                  }
              
              
@@ -253,41 +266,9 @@ public class BorrowingController implements Initializable{
          }
     }
 
-    @FXML
-    void btnUpdateOnAction(ActionEvent event) {
-        System.out.println("update");
-        update();
-
-    }
-
-    private void update() {
-        try{
-            String borrID=txtBorrowingID.getText();
-            String mid=txtMemberID.getText();
-            String bookId=txtBookID.getText();
-            String borrDate=txtBDate.getText();
-            String dueDate=txtDDate.getText();
-            String rtnDate=txtRDate.getText();
-            Double fine=Double.parseDouble(txtFine.getText());
-            
-            if (borrID != null && !borrID.isEmpty() && mid != null && !mid.isEmpty()&&bookId != null && !bookId.isEmpty()&& borrDate != null&& !borrDate.isEmpty()) {
-                BorrowingDto borrowingDto = new BorrowingDto(borrID,mid,bookId,borrDate,dueDate,rtnDate,fine);
-                String resp = borrowingService.update(borrowingDto);
-                
     
-                showAlert(AlertType.INFORMATION, "Status", resp);
-                clearForm();
-                loadTable();
-            } else {
-                showAlert(AlertType.WARNING, "Error", "Relevent field  must be Included");
-            }
-        } catch (Exception e) {
-            
-            e.printStackTrace();
-            showAlert(AlertType.ERROR, "Error", "Error while Updating " + e.getMessage());
-        }
-    }
 
+    
     private void loadTable() {
         try {
             colBorrowingID.setCellValueFactory(new PropertyValueFactory<>("borrID"));
@@ -295,22 +276,17 @@ public class BorrowingController implements Initializable{
             colBookID.setCellValueFactory(new PropertyValueFactory<>("bookId"));
             colBorrowDate.setCellValueFactory(new PropertyValueFactory<>("borrDate"));
             colDueDate.setCellValueFactory(new PropertyValueFactory<>("dueDate"));
-            colReturndate.setCellValueFactory(new PropertyValueFactory<>("rtnDate"));
+            colReturndate.setCellValueFactory(new PropertyValueFactory<>("isReturn"));
             colFine.setCellValueFactory(new PropertyValueFactory<>("fine"));
 
-            
-        
             ArrayList<BorrowingDto> borrowingDtos = borrowingService.getAll();
             ObservableList<BorrowingTM> borrowingTMList = FXCollections.observableArrayList();
-            for(BorrowingDto borr:borrowingDtos){            
-                BorrowingTM borrowingTM = new BorrowingTM(
-                            borr.getBorrID(),
-                            borr.getMid(),
-                            borr.getBookId(),
-                            borr.getBorrDate(),
-                            borr.getDueDate(),
-                            borr.getRtnDate(),
-                            borr.getFine());                            
+            for(BorrowingDto borr:borrowingDtos){   
+                  CheckBox checkBox = new CheckBox();
+                  checkBox.setSelected(borr.isReturn());       
+                BorrowingTM borrowingTM = new BorrowingTM(borr.getBorrID(),
+                borr.getMid(),borr.getBookId(),borr.getBorrDate(),borr.getDueDate(),checkBox,borr.getFine());
+                                                        
                             
                 borrowingTMList.add(borrowingTM);
             }
@@ -339,6 +315,8 @@ public class BorrowingController implements Initializable{
         txtDDate.setText("");
         txtRDate.setText("");
         txtFine.setText("");
+        lblBookTitle.setText("");
+        lblMemeberDetail.setText("");
     }
 
    @Override
@@ -352,3 +330,4 @@ public class BorrowingController implements Initializable{
 
 
 }
+

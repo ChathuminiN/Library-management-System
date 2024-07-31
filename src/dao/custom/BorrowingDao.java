@@ -11,12 +11,8 @@ public interface BorrowingDao extends CrudDao<BorrowingEntity, String> {
 
     boolean delete(String borrID)throws Exception;
 
-    boolean update(BorrowingEntity entity)throws Exception;
-
     ArrayList<BorrowingEntity> getAll()throws Exception;
 
-    BorrowingEntity getBID(String borrID)throws Exception;;
-
-    BorrowingEntity getMID(String borrMID)throws Exception;;
+    BorrowingEntity getBID(String borrID)throws Exception;   
     
 }

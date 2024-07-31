@@ -1,72 +1,101 @@
 package tm;
 
+import java.time.LocalDate;
+
+import javafx.scene.control.CheckBox;
+
 public class BorrowingTM {
     private String borrID;
     private String mid;
     private String bookId;
-    private String borrDate;
-    private String dueDate;
-    private String rtnDate;
+    private LocalDate borrDate;
+    private LocalDate dueDate;
+    private CheckBox isReturn;
     private Double fine;
     public BorrowingTM() {
     }
-    public BorrowingTM(String borrID, String mid, String bookId, String borrDate, String dueDate, String rtnDate,
+    
+    public BorrowingTM(String borrID, String mid, String bookId, LocalDate borrDate, LocalDate dueDate,CheckBox isReturn,
             Double fine) {
         this.borrID = borrID;
         this.mid = mid;
         this.bookId = bookId;
         this.borrDate = borrDate;
         this.dueDate = dueDate;
-        this.rtnDate = rtnDate;
+        this.isReturn =isReturn;
         this.fine = fine;
     }
+
     public String getBorrID() {
         return borrID;
     }
+
     public void setBorrID(String borrID) {
         this.borrID = borrID;
     }
+
     public String getMid() {
         return mid;
     }
+
     public void setMid(String mid) {
         this.mid = mid;
     }
+
     public String getBookId() {
         return bookId;
     }
+
     public void setBookId(String bookId) {
         this.bookId = bookId;
     }
-    public String getBorrDate() {
+
+    public LocalDate getBorrDate() {
         return borrDate;
     }
-    public void setBorrDate(String borrDate) {
+
+    public void setBorrDate(LocalDate borrDate) {
         this.borrDate = borrDate;
     }
-    public String getDueDate() {
+
+
+    public LocalDate getDueDate() {
         return dueDate;
     }
-    public void setDueDate(String dueDate) {
+
+    public void setDueDate(LocalDate dueDate) {
         this.dueDate = dueDate;
     }
-    public String getRtnDate() {
-        return rtnDate;
-    }
-    public void setRtnDate(String rtnDate) {
-        this.rtnDate = rtnDate;
-    }
+
+   
+
     public Double getFine() {
         return fine;
     }
+
     public void setFine(Double fine) {
         this.fine = fine;
     }
+
     @Override
     public String toString() {
         return "BorrowingTM [borrID=" + borrID + ", mid=" + mid + ", bookId=" + bookId + ", borrDate=" + borrDate
-                + ", dueDate=" + dueDate + ", rtnDate=" + rtnDate + ", fine=" + fine + "]";
+                + ", dueDate=" + dueDate + ", isReturn=" + isReturn + ", fine=" + fine + "]";
     }
+
+    public CheckBox getIsReturn() {
+        return isReturn;
+    }
+
+    public void setIsReturn(CheckBox isReturn) {
+        this.isReturn = isReturn;
+    }
+
+   
+
+    
+
+   
     
     
 }

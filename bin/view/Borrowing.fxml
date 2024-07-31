@@ -20,34 +20,24 @@
             <Font name="ScriptC" size="39.0" />
          </font>
       </Label>
-      <JFXButton fx:id="btnSave" buttonType="RAISED" layoutX="815.0" layoutY="95.0" onAction="#btnSaveOnAction" prefHeight="36.0" prefWidth="98.0" style="-fx-background-color: rgb(247, 241, 227);" text="Save" textFill="#6827d9">
+      <JFXButton fx:id="btnSave" buttonType="RAISED" layoutX="359.0" layoutY="114.0" onAction="#btnSaveOnAction" prefHeight="27.0" prefWidth="134.0" style="-fx-background-color: rgb(247, 241, 227);" text="Borrowing Saved" textFill="#33c17a">
          <font>
             <Font name="Arial Bold" size="11.0" />
          </font>
       </JFXButton>
-      <TextField fx:id="txtBookID" layoutX="118.0" layoutY="186.0" prefHeight="27.0" prefWidth="150.0" promptText="Book ID" />
+      <TextField fx:id="txtBookID" layoutX="118.0" layoutY="189.0" prefHeight="27.0" prefWidth="150.0" promptText="Book ID" />
       <TextField fx:id="txtMemberID" layoutX="118.0" layoutY="151.0" prefHeight="27.0" prefWidth="150.0" promptText="Member ID" />
-      <JFXButton fx:id="btnDelete" buttonType="RAISED" layoutX="815.0" layoutY="145.0" onAction="#btnDeleteOnAction" prefHeight="36.0" prefWidth="98.0" style="-fx-background-color: rgb(247, 241, 227);" text="Delete" textFill="#d92737">
-         <font>
-            <Font name="Arial Bold" size="11.0" />
-         </font>
-      </JFXButton>
-      <JFXButton fx:id="btnUpdate" buttonType="RAISED" layoutX="815.0" layoutY="195.0" onAction="#btnUpdateOnAction" prefHeight="36.0" prefWidth="98.0" style="-fx-background-color: rgb(247, 241, 227);" text="Edit" textFill="#28b928">
-         <font>
-            <Font name="Arial Bold" size="11.0" />
-         </font>
-      </JFXButton>
       <Label fx:id="lblBorrowingID" layoutX="21.0" layoutY="105.0" prefHeight="46.0" prefWidth="98.0" text="Borrowing ID" textAlignment="CENTER" textFill="#1b9160">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="lblBookID" layoutX="21.0" layoutY="178.0" prefHeight="46.0" prefWidth="120.0" text="Book ID" textAlignment="CENTER" textFill="#1b9160">
+      <Label fx:id="lblBookID" layoutX="19.0" layoutY="180.0" prefHeight="46.0" prefWidth="120.0" text="Book ID" textAlignment="CENTER" textFill="#1b9160">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TableView fx:id="tblBorrowing" layoutX="14.0" layoutY="253.0" prefHeight="458.0" prefWidth="934.0">
+      <TableView fx:id="tblBorrowing" layoutX="14.0" layoutY="303.0" prefHeight="408.0" prefWidth="934.0">
          <columns>
             <TableColumn fx:id="colBorrowingID" prefWidth="93.60000324249268" text="Borrowing ID" />
             <TableColumn fx:id="colMemberID" prefWidth="181.59999084472656" text="Member ID" />
@@ -63,14 +53,14 @@
             <Font name="Arial Bold" size="11.0" />
          </font>
       </JFXButton>
-      <TextField fx:id="txtRDate" layoutX="481.0" layoutY="186.0" prefHeight="27.0" prefWidth="158.0" promptText="Returned Date" />
-      <TextField fx:id="txtDDate" layoutX="481.0" layoutY="149.0" prefHeight="27.0" prefWidth="158.0" promptText="Due Date" />
-      <Label fx:id="lblDuedate" layoutX="368.0" layoutY="141.0" prefHeight="46.0" prefWidth="82.0" text="Due Date" textAlignment="CENTER" textFill="#1b9160">
+      <TextField fx:id="txtRDate" layoutX="642.0" layoutY="258.0" prefHeight="27.0" prefWidth="158.0" promptText="Returned Date" />
+      <TextField fx:id="txtDDate" layoutX="360.0" layoutY="258.0" prefHeight="27.0" prefWidth="158.0" promptText="Due Date" />
+      <Label fx:id="lblDuedate" layoutX="289.0" layoutY="248.0" prefHeight="46.0" prefWidth="70.0" text="Due Date" textAlignment="CENTER" textFill="#1b9160">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="lblReturndate" layoutX="367.0" layoutY="176.0" prefHeight="46.0" prefWidth="105.0" text="Returned Date" textAlignment="CENTER" textFill="#1b9160">
+      <Label fx:id="lblReturndate" layoutX="536.0" layoutY="248.0" prefHeight="46.0" prefWidth="105.0" text="Returned Date" textAlignment="CENTER" textFill="#1b9160">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -81,22 +71,29 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtBDate" layoutX="481.0" layoutY="113.0" prefHeight="27.0" prefWidth="158.0" promptText="Borrow Date" />
-      <Label fx:id="lblBorrowDate" layoutX="370.0" layoutY="103.0" prefHeight="46.0" prefWidth="98.0" text="Borrow Date" textAlignment="CENTER" textFill="#1b9160">
+      <TextField fx:id="txtBDate" layoutX="112.0" layoutY="258.0" prefHeight="27.0" prefWidth="158.0" promptText="Borrow Date" />
+      <Label fx:id="lblBorrowDate" layoutX="14.0" layoutY="248.0" prefHeight="46.0" prefWidth="98.0" text="Borrow Date" textAlignment="CENTER" textFill="#1b9160">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <JFXButton fx:id="btnSearchMID" buttonType="RAISED" layoutX="276.0" layoutY="156.0" onAction="#btnSearchMIDOnAction" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: rgb(247, 241, 227);" text="Search" textFill="#d98e27">
+      <JFXButton fx:id="btnSearchMID" buttonType="RAISED" layoutX="276.0" layoutY="151.0" onAction="#btnSearchMIDOnAction" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: rgb(247, 241, 227);" text="Search" textFill="#d98e27">
          <font>
             <Font name="Arial Bold" size="11.0" />
          </font>
       </JFXButton>
-      <TextField fx:id="txtFine" alignment="TOP_CENTER" layoutX="692.0" layoutY="148.0" prefHeight="27.0" prefWidth="82.0" promptText="Fine" style="-fx-background-color: rgb(123, 237, 159);" />
-      <Label fx:id="lblFinr" layoutX="650.0" layoutY="139.0" prefHeight="46.0" prefWidth="41.0" text="Fine" textAlignment="CENTER" textFill="#1b9160">
+      <TextField fx:id="txtFine" alignment="TOP_CENTER" layoutX="850.0" layoutY="258.0" prefHeight="27.0" prefWidth="82.0" promptText="Fine" style="-fx-background-color: rgb(223, 230, 233);" />
+      <Label fx:id="lblFinr" layoutX="808.0" layoutY="248.0" prefHeight="46.0" prefWidth="41.0" text="Fine" textAlignment="CENTER" textFill="#1b9160">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
+      <JFXButton fx:id="btnSearchBookName" buttonType="RAISED" layoutX="276.0" layoutY="187.0" onAction="#btnSearchBookNameOnAction" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: rgb(247, 241, 227);" text="Search" textFill="#d98e27">
+         <font>
+            <Font name="Arial Bold" size="11.0" />
+         </font>
+      </JFXButton>
+      <Label fx:id="lblBookTitle" layoutX="359.0" layoutY="186.0" prefHeight="27.0" prefWidth="564.0" style="-fx-background-color: rgb(223, 230, 233); -fx-background-color: ;" text="*" />
+      <Label fx:id="lblMemeberDetail" layoutX="359.0" layoutY="151.0" prefHeight="27.0" prefWidth="564.0" style="-fx-background-color: rgb(223, 230, 233);" text="*" />
    </children>
 </AnchorPane>

@@ -58,5 +58,13 @@ public class BorrowingDDaoImpl implements BorrowingDDao {
         }
         return null;
     }
+
+    @Override
+    public boolean save(BorrowingDetailEntity borrowingDetailEntity) throws Exception {
+        System.out.println(borrowingDetailEntity);
+        
+        return CrudUtil.executeUpdate("INSERT INTO borrowingsdetails VALUES(?,?)",borrowingDetailEntity.getBrrId(),borrowingDetailEntity.getBookId());
+        
+    }
     
 }

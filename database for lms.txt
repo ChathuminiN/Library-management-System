@@ -33,17 +33,18 @@ CREATE TABLE Borrowings (
     BookID VARCHAR(10),
     BorrowDate DATE,
     DueDate DATE,
-    ReturnDate DATE,
+    isReturn tinyint,
     Fine DECIMAL(10, 2),
     FOREIGN KEY (MemberID) REFERENCES Members(MemberID));
     
 
 CREATE TABLE BorrowingsDetails (
-BookID VARCHAR(10),
-BorrowingID VARCHAR(10),
-FOREIGN KEY (BookID) REFERENCES Books(BookID));
-
-
+BorrowingID VARCHAR(10) NOT NULL,
+BookID VARCHAR(10) NOT NULL,
+CONSTRAINT PRIMARY KEY (BorrowingID,BookID),
+CONSTRAINT FOREIGN KEY (BookID) REFERENCES Books(BookID),
+CONSTRAINT FOREIGN KEY (BorrowingID) REFERENCES Borrowings(BorrowingID)
+);
 
 
 INSERT INTO BookCategories (CategoryID, CategoryName) VALUES ('cat001', 'Science'), ('cat002', 'Environment'), ('cat003', 'Languages'), ('cat004', 'IT'), ('cat005', 'Philosophy'), ('cat006', 'Psychology'), ('cat007', 'Novels'), ('cat008', 'Health'), ('cat009', 'Magazine'), ('cat010', 'Others');
