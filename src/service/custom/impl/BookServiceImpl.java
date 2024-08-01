@@ -74,6 +74,17 @@ public class BookServiceImpl implements BookService {
         return null;
     }
 
+    @Override
+    public boolean isBookAvailable(String bookId) throws Exception {
+        BookEntity entity = bookDao.get(bookId);
+        if(entity != null){
+           return (entity.getCopiesa())>0? true:false;
+            
+        }
+        return false;
+        
+    }
+
     
 
 

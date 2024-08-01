@@ -74,8 +74,7 @@ public class BorrowingController implements Initializable{
     @FXML
     private TableColumn<BorrowingTM, String> colMemberID;
 
-   // @FXML
-    //private TableColumn<BorrowingTM, Boolean> colReturndate;
+   
     @FXML
     private TableColumn<BorrowingTM, CheckBox> colReturndate;
 
@@ -185,19 +184,28 @@ public class BorrowingController implements Initializable{
             LocalDate dueDate = borrDate.plusDays(14);
         
             Double fine=Double.parseDouble(txtFine.getText());
-            
-            if (borrID != null && !borrID.isEmpty() && mid != null && !mid.isEmpty()&&bookId != null && !bookId.isEmpty()&& borrDate != null) {
-                BorrowingDto borrowingDto = new BorrowingDto(borrID,mid,bookId,borrDate,dueDate,false,fine);
-                String resp = borrowingService.save(borrowingDto);
-                
-               
-    
-                showAlert(AlertType.INFORMATION, "Status", resp);
-                clearForm();
-                loadTable();
-            } else {
-                showAlert(AlertType.WARNING, "Error", "Relevent field  must be Included");
+            fine=0.00;
+
+            if(bookService.isBookAvailable(bookId)){
+
+                if (borrID != null && !borrID.isEmpty() && mid != null && !mid.isEmpty()&&bookId != null && !bookId.isEmpty()&& borrDate != null) {
+                    BorrowingDto borrowingDto = new BorrowingDto(borrID,mid,bookId,borrDate,dueDate,false,fine);
+                    String resp = borrowingService.save(borrowingDto);                  
+                           
+                    showAlert(AlertType.INFORMATION, "Status", resp);
+                    clearForm();
+                    loadTable();
+                } else {
+                    showAlert(AlertType.WARNING, "Error", "Relevent field  must be Included");
+                }
+
+            }else{
+                System.out.println("Book Not Available at the moment");
+                showAlert(AlertType.WARNING, "Status", "Book Not Available at the moment");
             }
+
+            
+            
         } catch (Exception e) {
             
             e.printStackTrace();
@@ -205,6 +213,7 @@ public class BorrowingController implements Initializable{
         }
     }
 
+    
     
     
     @FXML
@@ -224,10 +233,10 @@ public class BorrowingController implements Initializable{
                     txtMemberID.setText(dto.getMid());
                     txtBookID.setText(dto.getBookId());
                     txtBDate.setText(String.valueOf(dto.getBorrDate()));
-                    txtDDate.setText(String.valueOf(dto.getDueDate()));
-    
+                    txtDDate.setText(String.valueOf(dto.getDueDate()));    
                     txtFine.setText(dto.getFine().toString());
-                    
+
+                                        
 
                 } else {
                     showAlert(Alert.AlertType.WARNING, "Not Found", "Borowing not found.");

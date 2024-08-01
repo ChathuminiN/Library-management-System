@@ -17,6 +17,8 @@ public interface BookService extends SuperService {
 
     ArrayList<BookDto> getAll()throws Exception;
 
+    boolean isBookAvailable(String bookId)throws Exception;
+
     
 
     
