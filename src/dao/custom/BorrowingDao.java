@@ -13,6 +13,9 @@ public interface BorrowingDao extends CrudDao<BorrowingEntity, String> {
 
     ArrayList<BorrowingEntity> getAll()throws Exception;
 
-    BorrowingEntity getBID(String borrID)throws Exception;   
+    BorrowingEntity getBID(String borrID)throws Exception;
+
+    boolean update(String borrID,String bookID)throws Exception; 
+
     
 }

@@ -140,5 +140,20 @@ public class BorrowingServiceImpl implements BorrowingService {
         }
         return null;
     }
+
+
+
+
+    @Override
+    public Boolean update(String borrID,String bookID) throws Exception {
+        String b_id=borrID;
+      boolean update = borrowingDao.update(b_id,bookID);
+      return update;
+    }
+
+
+
+
+    
     
 }

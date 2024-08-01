@@ -3,6 +3,8 @@ package controller;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 
@@ -19,6 +21,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -30,7 +34,10 @@ import service.ServiceFactory;
 import service.custom.BookService;
 import service.custom.BorrowingService;
 import service.custom.MemberService;
-//import service.custom.BorrowingsDService;
+
+import service.custom.impl.BorrowingServiceImpl;
+
+
 import tm.BorrowingTM;
 
 
@@ -294,9 +301,10 @@ public class BorrowingController implements Initializable{
                   checkBox.setSelected(borr.isReturn());       
                 BorrowingTM borrowingTM = new BorrowingTM(borr.getBorrID(),
                 borr.getMid(),borr.getBookId(),borr.getBorrDate(),borr.getDueDate(),checkBox,borr.getFine());
-                                                        
+                                               
                             
                 borrowingTMList.add(borrowingTM);
+                checkBoxOnAction(checkBox,borrowingDtos);   
             }
         System.out.println(borrowingTMList);
         ;
@@ -306,6 +314,47 @@ public class BorrowingController implements Initializable{
             showAlert(Alert.AlertType.ERROR, "Error", "Table Loading Error" + e.getMessage());
         }
     }
+
+
+   private void checkBoxOnAction(CheckBox checkBox, List<BorrowingDto> borrowingList) {
+    BorrowingService borrowingServiceImpl2 = new BorrowingServiceImpl();
+    checkBox.setOnAction((e) -> {
+        //BorrowingTM selectedItem = tblBorrowing.getSelectionModel().getSelectedItem();
+        ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+                ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+
+                Optional<ButtonType> type = new Alert(Alert.AlertType.INFORMATION, "Are you sure reservation Complete?",
+                        yes, no).showAndWait();
+                if (type.orElse(no) == yes) {
+                    int focusedIndex = tblBorrowing.getSelectionModel().getSelectedIndex();
+                    System.out.println("forcued INdex" + focusedIndex);
+                    try {
+                        boolean update = borrowingServiceImpl2.update((borrowingList.get(focusedIndex+1)).getBorrID(),borrowingList.get(focusedIndex+1).getBookId());
+                        if(update){
+                            checkBox.setSelected(true);
+                        }
+                        else{
+                            checkBox.setSelected(false);
+                        }
+                    } catch (Exception e1) {
+                        
+                        e1.printStackTrace();
+                        showAlert(Alert.AlertType.ERROR, "Error", "Error" + e1.getMessage());
+                    }
+                    
+
+                }
+                else{
+
+                }
+
+    });
+        
+        }
+
+
+
 
     private void showAlert(AlertType alertType, String title, String message) {
         Alert alert = new Alert(alertType);

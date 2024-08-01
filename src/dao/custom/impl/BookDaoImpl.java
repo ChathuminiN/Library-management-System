@@ -79,5 +79,10 @@ public class BookDaoImpl implements BookDao {
             return bookEntities;
         
     }
+
+    public void updateAvailbility(String bookID) throws Exception {
+        BookEntity entity= get(bookID);
+        CrudUtil.executeUpdate("UPDATE books SET CopiesAvailable =? WHERE BookID =?",entity.getCopiesa()+1,bookID);
+    }
     
 }

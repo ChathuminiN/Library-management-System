@@ -67,5 +67,15 @@ public class BorrowingDaoImpl implements BorrowingDao {
             
             return Entities;
     }
+
+    @Override
+    public boolean update(String borrID,String bookID) throws Exception {
+        BookDaoImpl bookDaoImpl = new BookDaoImpl();
+        boolean executeUpdate = CrudUtil.executeUpdate("UPDATE borrowings SET isreturn = ? WHERE BorrowingID = ?", true, borrID);
+        if(executeUpdate){
+            bookDaoImpl.updateAvailbility(bookID);
+        }
+        return executeUpdate;
+    }
     
 }

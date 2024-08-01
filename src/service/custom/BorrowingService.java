@@ -12,5 +12,7 @@ public interface BorrowingService extends SuperService {
     BorrowingDto getBID(String borrID)throws Exception;
 
     ArrayList<BorrowingDto> getAll()throws Exception;
+
+    Boolean update(String borrID,String bookID)throws Exception;
     
 }
