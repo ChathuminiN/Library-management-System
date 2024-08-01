@@ -137,7 +137,7 @@ public class BorrowingDetailController implements Initializable {
 
     private void loadTable() {
         try {
-            colBorrowingID.setCellValueFactory(new PropertyValueFactory<>("borrID"));
+            colBorrowingID.setCellValueFactory(new PropertyValueFactory<>("brrId"));
             colBookID.setCellValueFactory(new PropertyValueFactory<>("bookId"));
                      
         ArrayList<BorrowingDetailDto> borrowingDetailDtos = borrowingsDService.getAll();

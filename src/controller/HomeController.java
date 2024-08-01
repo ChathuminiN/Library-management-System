@@ -1,7 +1,7 @@
 package controller;
 
 import java.io.IOException;
-
+import java.net.URL;
 
 import com.jfoenix.controls.JFXButton;
 
@@ -9,9 +9,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 
 public class HomeController {
@@ -45,9 +46,12 @@ public class HomeController {
     @FXML
     void btnBooksOnAction(ActionEvent event) throws IOException {
         System.out.println("Clicked on Books");
-        this.root.getChildren().clear();
-        Parent node = FXMLLoader.load(this.getClass().getResource("/view/Books.fxml"));
-        this.root.getChildren().add(node);
+        URL resource = this.getClass().getResource("/view/Books.fxml");
+            Parent root = FXMLLoader.load(resource);
+            Stage stage=new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+            stage.setTitle("Books");
 
 
     }
@@ -56,39 +60,37 @@ public class HomeController {
     void btnBorrowingsOnAction(ActionEvent event) throws IOException {
         System.out.println("Clicked on Borrowings");
 
-        this.root.getChildren().clear();
-        Parent node = FXMLLoader.load(this.getClass().getResource("/view/Borrowing.fxml"));
-        this.root.getChildren().add(node);
+        URL resource = this.getClass().getResource("/view/Borrowing.fxml");
+            Parent root = FXMLLoader.load(resource);
+            Stage stage=new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+            stage.setTitle("Borrowing");
 
     }
 
     @FXML
     void btnCatogoryOnAction(ActionEvent event) throws IOException {
         System.out.println("Clicked on Book Category");
-        //////////////////////////////////////////////////////////////////////////////////////////////////
-            // URL resource = this.getClass().getResource("/view/Category.fxml");
-            // Parent root = FXMLLoader.load(resource);
-            // Stage stage=new Stage();
-            // stage.setScene(new Scene(root));
-            // stage.show();
-            // stage.setTitle("Book Categories");
-
-            this.root.getChildren().clear();
-            Parent node = FXMLLoader.load(this.getClass().getResource("/view/Category.fxml"));
-            this.root.getChildren().add(node);
-            
-            //////////////////////////////////////////////////////////////////////////////////////////////////
-
-    
+        
+            URL resource = this.getClass().getResource("/view/Category.fxml");
+            Parent root = FXMLLoader.load(resource);
+            Stage stage=new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+            stage.setTitle("Book Categories");
 
     }
 
     @FXML
     void btnContactOnAction(ActionEvent event) throws IOException {
         System.out.println("Clicked on Contact us");
-        this.root.getChildren().clear();
-        Parent node = FXMLLoader.load(this.getClass().getResource("/view/ContactUs.fxml"));
-        this.root.getChildren().add(node);
+        URL resource = this.getClass().getResource("/view/ContactUs.fxml");
+        Parent root = FXMLLoader.load(resource);
+        Stage stage=new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+        stage.setTitle("ContactUs");;
 
     }
 
@@ -96,9 +98,12 @@ public class HomeController {
     void btnMembersOnAction(ActionEvent event)throws IOException {
         System.out.println("Clicked on Members");
 
-        this.root.getChildren().clear();
-        Parent node = FXMLLoader.load(this.getClass().getResource("/view/Members.fxml"));
-        this.root.getChildren().add(node);
+        URL resource = this.getClass().getResource("/view/Members.fxml");
+            Parent root = FXMLLoader.load(resource);
+            Stage stage=new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+            stage.setTitle("Members");
 
     }
 
@@ -106,9 +111,12 @@ public class HomeController {
     void btnBorrowingDetailsOnAction(ActionEvent event) throws IOException {
 
         System.out.println("Clicked on Borrowing Details");
-        this.root.getChildren().clear();
-        Parent node = FXMLLoader.load(this.getClass().getResource("/view/BorrowingDetails.fxml"));
-        this.root.getChildren().add(node);
+        URL resource = this.getClass().getResource("/view/BorrowingDetails.fxml");
+            Parent root = FXMLLoader.load(resource);
+            Stage stage=new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+            stage.setTitle("Borrowing Details");
 
     }
 
